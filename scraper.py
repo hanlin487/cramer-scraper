@@ -1,3 +1,5 @@
+import collections
+import re
 import tweepy
 import os 
 import pandas as pd
@@ -24,10 +26,10 @@ def init_client():
                         )
     return client
 
-def vader_analysis(text):
-    nltk.download('vader_lexicon')
-    sia = SentimentIntensityAnalyzer()
-    return sia.polarity_scores(text=text)
+# def vader_analysis(text):
+#     nltk.download('vader_lexicon')
+#     sia = SentimentIntensityAnalyzer()
+#     return sia.polarity_scores(text=text)
 
 # def analyze(tweet):
 #     analysis = TextBlob(tweet)
@@ -40,6 +42,17 @@ def vader_analysis(text):
 #         return 'negative'
 
 # return list of tweets
+
+def load_csv():
+    with open('companies.csv') as file:
+        companies = collections.defaultdict(str)
+        lines = file.readlines()
+        for line in lines:
+            line = line.split(',')
+            companies[line[0]] = line[1].strip('\n ')
+        return companies
+
+
 def scrape_user(num_of_tweets):
     # boot up tweepy client for twitter
     username = "jimcramer"
@@ -69,11 +82,11 @@ def scrape_user(num_of_tweets):
         
             for tweet in batch.data:
                 # get sentiment 
-                scores = vader_analysis(tweet.text)
+                # scores = vader_analysis(tweet.text)
                 tweet_data = {
                     "date" : tweet.created_at,
                     "tweet_id" : tweet.id,
-                    "sentiment" : scores,
+                    # "sentiment" : scores,
                     "text" : tweet.text
                 }
                 tweets.append(tweet_data)
@@ -96,6 +109,9 @@ def scrape_user(num_of_tweets):
         print(f"Error {str(e)}")
 
 if __name__ == "__main__":
-    num_of_tweets = int(input("Enter how many tweets to scrape, cannot exceed 100: "))
-    tweets_df = scrape_user(num_of_tweets=num_of_tweets)
-    print(tweets_df)
+    # num_of_tweets = int(input("Enter how many tweets to scrape, cannot exceed 100: "))
+    # tweets_df = scrape_user(num_of_tweets=num_of_tweets)
+    # print(tweets_df)
+    # print(detect("NVDA, AAPL Palantir"))
+    companies = load_csv()
+    print(companies['PLTR'])
