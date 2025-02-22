@@ -4,10 +4,10 @@ import tweepy
 import os 
 import pandas as pd
 import nltk
+import sqlite3
 from nltk.sentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
 from dotenv import load_dotenv
-
 
 def init_client():
     load_dotenv()
@@ -26,23 +26,7 @@ def init_client():
                         )
     return client
 
-# def vader_analysis(text):
-#     nltk.download('vader_lexicon')
-#     sia = SentimentIntensityAnalyzer()
-#     return sia.polarity_scores(text=text)
-
-# def analyze(tweet):
-#     analysis = TextBlob(tweet)
-
-#     if analysis.sentiment.polarity > 0:
-#         return 'positive'
-#     elif analysis.sentiment.polarity == 0:
-#         return 'neutral'
-#     else:
-#         return 'negative'
-
-# return list of tweets
-
+# loads csv of SP500 companies into dictionary {ticker : company name}
 def load_csv():
     with open('companies.csv') as file:
         companies = collections.defaultdict(str)
@@ -52,7 +36,7 @@ def load_csv():
             companies[line[0]] = line[1].strip('\n ')
         return companies
 
-
+# scrapes tweets
 def scrape_user(num_of_tweets):
     # boot up tweepy client for twitter
     username = "jimcramer"
@@ -81,12 +65,9 @@ def scrape_user(num_of_tweets):
                 break
         
             for tweet in batch.data:
-                # get sentiment 
-                # scores = vader_analysis(tweet.text)
                 tweet_data = {
-                    "date" : tweet.created_at,
                     "tweet_id" : tweet.id,
-                    # "sentiment" : scores,
+                    "date" : tweet.created_at,
                     "text" : tweet.text
                 }
                 tweets.append(tweet_data)
@@ -97,21 +78,44 @@ def scrape_user(num_of_tweets):
                 break
     
         # setup df and return
-        print(f'TWEETS LIST {tweets}')
+        # print(f'TWEETS LIST {tweets}')
         df = pd.DataFrame(tweets)
-        # df = pd.DataFrame(sorted(tweets, key=lambda x: x["sentiment"]))
-        filename = f"top{num_of_tweets}tweets_{username}.csv"
-        df.to_csv(filename, index=False, mode='w')
         return df
-        # return tweets
     
     except Exception as e:
         print(f"Error {str(e)}")
 
+def save_to_csv(df):
+    filename = f"top{len(df)}tweets_jimcramer.csv"
+    df.to_csv(filename, index=False, mode='w')
+
+def insert_to_db(df):
+    conn = sqlite3.connect("tweets.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tweets (
+            tweet_id TEXT PRIMARY KEY,
+            date TEXT,
+            content TEXT
+        );
+        """
+    )
+    cursor.executemany("INSERT INTO tweets (tweet_id, date, content) VALUES (?, ?, ?)", df.values.tolist())
+    conn.commit()
+    conn.close()
+
+def clear_db():
+    conn = sqlite3.connect('tweets.db')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM tweets")
+    conn.commit()
+    conn.close()
+
 if __name__ == "__main__":
     # num_of_tweets = int(input("Enter how many tweets to scrape, cannot exceed 100: "))
     # tweets_df = scrape_user(num_of_tweets=num_of_tweets)
-    # print(tweets_df)
-    # print(detect("NVDA, AAPL Palantir"))
-    companies = load_csv()
-    print(companies['PLTR'])
+    testdf = pd.read_csv("top10tweets_jimcramer.csv")
+    testdf = testdf[['tweet_id', 'date', 'text']]
+    clear_db()
+    insert_to_db(testdf)
