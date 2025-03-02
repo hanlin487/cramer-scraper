@@ -13,18 +13,13 @@ def detect_companies(text : str, companies_data : pd.DataFrame, threshold : int 
         threshold: Similarity threshold for fuzzy matching (0-100)
         
     Returns:
-        List of detected companies with match details
+        List of detected companies 
     """
     detected = []
-    text_lower = text.lower()
-    c = 0
 
     for _, company in companies_data.iterrows():
         ticker = company['ticker']
         all_names = [name for name in company['names']]
-        # c += 1
-        # if c == 10:
-        #     break    
 
         # # Check for exact ticker match (case insensitive)
         ticker_pattern = r'\b' + re.escape(ticker) + r'\b' 
@@ -48,32 +43,28 @@ def detect_companies(text : str, companies_data : pd.DataFrame, threshold : int 
         if name_matched:
             continue
         
+        """
+        Discarding fuzzy matching for now because I don't think Jim Cramer makes typos
+        """
         # # If no exact match, try fuzzy matching for company names
         # words = re.findall(r'\b\w+(?:\s+\w+){0,5}\b', text)
         # for name in all_names:
         #     for word_group in words:
         #         similarity = fuzz.partial_ratio(name, word_group.lower())
         #         if similarity >= threshold:
-        #             detected.append({
-        #                 'company': primary_name,
-        #                 'ticker': company['ticker'],
-        #                 'match_type': 'name',
-        #                 'match_quality': 'fuzzy',
-        #                 'matched_name': name,
-        #                 'similarity': similarity,
-        #                 'matched_text': word_group
-        #             })
+        #             detected.append(company['ticker'])
         #             name_matched = True
         #             break
         #     if name_matched:
         #         break
-    print(detected)
+    # print(detected)
+    
     return detected
 
 # Example usage
 if __name__ == "__main__":
-    # Load companies data
-    with open("companies.csv") as f:
+    # Load companies data from csv into dictionary
+    with open("./storage/companies.csv") as f:
         company_dict = {"ticker" : [], "names" : []}
 
         for line in f.readlines():
@@ -81,11 +72,7 @@ if __name__ == "__main__":
             company_dict["ticker"].append(line[0])
             company_dict["names"].append(line[1:])
 
-
     companies = pd.DataFrame(company_dict)
     # print(companies)
-
-    
     sample_text = "People will wonder if Nvidia has now become a 'perfect' security, alongside PLTR, META, AMZN, and Google."
-
     detect_companies(sample_text, companies)
