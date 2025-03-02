@@ -1,13 +1,9 @@
 import json
-import re
 import tweepy
 import os 
 import pandas as pd
-import nltk
-import sqlite3
-from nltk.sentiment import SentimentIntensityAnalyzer
-from textblob import TextBlob
 from dotenv import load_dotenv
+from detection import detect_companies
 
 # init tweepy client
 def init_client() -> None:
@@ -27,23 +23,18 @@ def init_client() -> None:
                         )
     return client
 
-# loads csv of SP500 companies into dictionary {ticker : company name}
-def load_csv() -> dict:
-    with open('companies.csv') as file:
-        companies = {}
-        tickers = set()
-        names = set()
-        lines = file.readlines()
+# loads csv of SP500 companies into df {ticker : company name}
+def load_csv() -> pd.DataFrame:
+    with open("./storage/companies.csv") as f:
+        company_dict = {"ticker" : [], "names" : []}
 
-        for line in lines:
-            line = line.strip('\n').split(',')
-            companies[line[0]] = line[1:]
-            tickers.add(line[0])
+        for line in f.readlines():
+            line = line.strip().split(",")
+            company_dict["ticker"].append(line[0])
+            company_dict["names"].append(line[1:])
 
-            for n in line[1:]:
-                names.add(n) if n else None
-    
-    return (dict(sorted(companies.items())), tickers, names)
+    companies = pd.DataFrame(company_dict)
+    return companies
 
 # scrapes tweets
 def scrape_user(num_of_tweets) -> pd.DataFrame:
@@ -94,41 +85,7 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
     except Exception as e:
         print(f"Error {str(e)}")
 
-# saves dataframe to csv
-def save_to_csv(df) -> None:
-    filename = f"top{len(df)}tweets_jimcramer.csv"
-    df.to_csv(filename, index=False, mode='w')
-
-def insert_to_db(df) -> None:
-    conn = sqlite3.connect("tweets.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        """
-        CREATE TABLE IF NOT EXISTS tweets (
-            tweet_id TEXT PRIMARY KEY,
-            date TEXT,
-            content TEXT
-        );
-        """
-    )
-    cursor.executemany("INSERT INTO tweets (tweet_id, date, content) VALUES (?, ?, ?)", df.values.tolist())
-    conn.commit()
-    conn.close()
-
-def clear_db() -> None:
-    conn = sqlite3.connect('tweets.db')
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM tweets")
-    conn.commit()
-    conn.close()
-
-def find_companies():
-    
-
 if __name__ == "__main__":
-    # num_of_tweets = int(input("Enter how many tweets to scrape, cannot exceed 100: "))
-    # tweets_df = scrape_user(num_of_tweets=num_of_tweets)
-    testdf = pd.read_csv("top10tweets_jimcramer.csv")
-    testdf = testdf[['tweet_id', 'date', 'text']]
+    sp500 = load_csv()
+    print(sp500)
 
-    # TODO tokenize tweets and detect companies in each tweet if exists ************************************************************************************
