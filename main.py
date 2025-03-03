@@ -51,7 +51,7 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
         # get necessary info and set up paginator to pull multiple tweets
         user_id = user.data.id
         tweets = []
-        paginator = tweepy.Paginator(
+        paginator = tweepy.Paginator( 
             client.get_users_tweets,
             id=user_id,
             max_results=num_of_tweets,
@@ -87,5 +87,11 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
 
 if __name__ == "__main__":
     sp500 = load_csv()
-    print(sp500)
+    # print(sp500)
 
+    tweets = pd.read_csv("./storage/top10tweets_jimcramer.csv")
+    found = {}
+    print(tweets)
+    for _, t in tweets.iterrows():
+        found[t['tweet_id']] = detect_companies(t['text'], sp500)
+    print(json.dumps(found, indent=4))
