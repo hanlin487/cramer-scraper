@@ -2,6 +2,7 @@ import json
 import tweepy
 import os 
 import pandas as pd
+import storage
 from dotenv import load_dotenv
 from detection import detect_companies
 
@@ -24,8 +25,8 @@ def init_client() -> None:
     return client
 
 # loads csv of SP500 companies into df {ticker : company name}
-def load_csv() -> pd.DataFrame:
-    with open("./storage/companies.csv") as f:
+def load_sp500() -> pd.DataFrame:
+    with open("../storage/companies.csv") as f:
         company_dict = {"ticker" : [], "names" : []}
 
         for line in f.readlines():
@@ -48,6 +49,9 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
         if not user.data:
             raise ValueError(f"User {username} not found")
         
+        # load the sp500
+        sp500 = load_sp500()
+        
         # get necessary info and set up paginator to pull multiple tweets
         user_id = user.data.id
         tweets = []
@@ -65,10 +69,14 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
                 break
         
             for tweet in batch.data:
+                companies = detect_companies(tweet.text, sp500)
+                companies = " ".join(companies)
+
                 tweet_data = {
                     "tweet_id" : tweet.id,
-                    "date" : tweet.created_at,
-                    "text" : tweet.text
+                    "date" : str(tweet.created_at),
+                    "content" : str(tweet.text),
+                    "companies" : companies
                 }
                 tweets.append(tweet_data)
                 count += 1
@@ -79,19 +87,18 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
     
         # setup df and return
         # print(f'TWEETS LIST {tweets}')
-        df = pd.DataFrame(tweets)
+        df = pd.DataFrame(tweets).sort_values(by=["tweet_id"], ascending=True)
         return df
     
     except Exception as e:
         print(f"Error {str(e)}")
 
-if __name__ == "__main__":
-    sp500 = load_csv()
-    # print(sp500)
-
-    tweets = pd.read_csv("./storage/top10tweets_jimcramer.csv")
-    found = {}
+if __name__ == "__main__":    
+    # if limit rated comment these 2 lines out
+    tweets = scrape_user(10)
+    storage.dataframe_to_csv(tweets)
+    
+    # tweets = pd.read_csv("../storage/tweets_from_scraping.csv")
     print(tweets)
-    for _, t in tweets.iterrows():
-        found[t['tweet_id']] = detect_companies(t['text'], sp500)
-    print(json.dumps(found, indent=4))
+    storage.insert_to_db(tweets)
+    storage.database_to_csv()

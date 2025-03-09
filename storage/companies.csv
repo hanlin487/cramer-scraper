@@ -30,7 +30,7 @@ CVX,Chevron
 MRK,Merck
 WFC,Wells Fargo
 CSCO,Cisco Systems
-ACN,Accenture plc
+ACN,Accenture
 NOW,ServiceNow
 AXP,American Express
 MCD,McDonald's
@@ -38,7 +38,7 @@ PEP,Pepsico
 BX,Blackstone
 IBM,International Business Machines
 DIS,Walt Disney,Disney
-LIN,Linde plc
+LIN,Linde
 TMO,Thermo Fisher Scientific
 MS,Morgan Stanley
 ABT,Abbott Laboratories
@@ -54,7 +54,7 @@ CAT,Caterpillar
 TXN,Texas Instruments
 QCOM,QUALCOMM
 VZ,Verizon Communications,Verizon
-BKNG,Booking Holdings  Common St
+BKNG,Booking
 DHR,Danaher
 T,AT&T
 BLK,BlackRock
@@ -92,7 +92,7 @@ CB,Chubb Limited
 UPS,United Parcel Service
 ADI,Analog Devices
 MMC,Marsh & McLennan Companies
-MDT,Medtronic plc.
+MDT,Medtronic
 VRTX,Vertex Pharmaceuticals
 MU,Micron Technology
 SBUX,Starbucks
@@ -102,15 +102,15 @@ LRCX,Lam Research
 MO,Altria Group
 SO,Southern Company
 EQIX,Equinix
-CRWD,CrowdStrike Holdings
-PYPL,PayPal Holdings
+CRWD,CrowdStrike 
+PYPL,PayPal 
 SHW,Sherwin-Williams
 ICE,Intercontinental Exchange
 CME,CME Group
 AMT,American Tower
 APH,Amphenol
 ELV,Elevance Health
-TT,Trane Technologies plc
+TT,Trane Technologies
 MCO,Moody's
 CMG,Chipotle Mexican Grill
 INTC,Intel
@@ -125,7 +125,7 @@ MDLZ,Mondelez International
 MAR,Marriott International
 MSI,Motorola Solutions
 WELL,Welltower
-AON,Aon plc
+AON,Aon
 REGN,Regeneron Pharmaceuticals
 CI,The Cigna Group
 HCA,HCA Healthcare
@@ -159,7 +159,7 @@ RCL,Royal Caribbean Cruises Ltd.
 RSG,Republic Services
 CARR,Carrier Global
 CSX,CSX
-HLT,Hilton Worldwide Holdings
+HLT,Hilton Worldwide
 DLR,Digital Realty Trust
 TGT,Target
 KMI,Kinder Morgan
@@ -216,7 +216,7 @@ KMB,Kimberly-Clark
 NEM,Newmont
 DFS,Discover Financial Services
 PCG,Pacific Gas & Electric Co.
-TEL,TE Connectivity plc
+TEL,TE Connectivity
 MPC,Marathon Petroleum
 FAST,Fastenal Company
 AME,AMETEK
@@ -240,7 +240,6 @@ EA,Electronic Arts
 ODFL,Old Dominion Freight Line
 XEL,Xcel Energy
 TRGP,Targa Resources
-A,Agilent Technologies
 IT,Gartner
 LVS,Las Vegas Sands Corp.
 SYY,Sysco
@@ -252,7 +251,7 @@ IR,Ingersoll Rand
 YUM,Yum! Brands
 KHC,The Kraft Heinz Company
 GEHC,GE HealthCare Technologies
-IQV,IQVIA Holdings
+IQV,IQVIA
 GIS,General Mills
 CCL,Carnival
 RMD,ResMed
@@ -268,7 +267,7 @@ DD,DuPont de Nemours
 ETR,Entergy
 DECK,Deckers Outdoor
 EFX,Equifax
-UAL,United Airlines Holdings
+UAL,United Airlines
 WTW,Willis Towers Watson Public Lim
 TTWO,Take-Two Interactive Software
 HIG,Hartford Financial Services Gro
@@ -305,7 +304,7 @@ EQR,Equity Residential
 ON,ON Semiconductor
 PPG,PPG Industries
 K,Kellanova
-SW,Smurfit WestRock plc
+SW,Smurfit WestRock
 NUE,Nucor
 EL,Estee Lauder Companies
 BR,Broadridge Financial Solutions
@@ -353,14 +352,14 @@ TDY,Teledyne Technologies orpora
 ATO,Atmos Energy
 RF,Regions Financial
 BIIB,Biogen
-ZBH,Zimmer Biomet Holdings
+ZBH,Zimmer Biomet
 CNP,CenterPoint Energy
 MKC,McCormick & Company
 ES,Eversource Energy (D/B/A)
 WDC,Western Digital
 TSN,Tyson Foods
 TER,Teradyne
-STE,STERIS plc (Ireland)
+STE,STERIS
 PKG,Packaging  of Americ
 CLX,Clorox Company
 NTRS,Northern Trust
@@ -374,16 +373,16 @@ CMS,CMS Energy
 INVH,Invitation Homes
 FSLR,First Solar
 BF-B,Brown Forman
-LDOS,Leidos Holdings
+LDOS,Leidos
 CFG,Citizens Financial Group
-LH,Labcorp Holdings
+LH,Labcorp
 VRSN,VeriSign
 IP,International Paper Company
 ESS,Essex Property Trust
 PODD,Insulet
 COO,The Cooper Companies
 SMCI,Super Micro Computer
-STX,Seagate Technology Holdings PLC
+STX,Seagate
 MAA,Mid-America Apartment Communiti
 FDS,FactSet Research Systems
 NRG,NRG Energy
@@ -404,7 +403,7 @@ DGX,Quest Diagnostics
 KEY,KeyCorp
 NI,NiSource
 MOH,Molina Healthcare
-PNR,Pentair plc.
+PNR,Pentair
 J,Jacobs Solutions
 DG,Dollar General
 BALL,Ball
@@ -427,7 +426,7 @@ AVY,Avery Dennison
 BAX,Baxter International
 TPR,Tapestry
 VTRS,Viatris
-CF,CF Industries Holdings
+CF,CF Industries
 FFIV,F5
 DPZ,Domino's Pizza
 AKAM,Akamai Technologies
@@ -437,9 +436,9 @@ SWKS,Skyworks Solutions
 EVRG,Evergy
 EPAM,EPAM Systems
 DOC,Healthpeak Properties
-APTV,Aptiv PLC
+APTV,Aptiv
 RVTY,Revvity
-AMCR,Amcor plc
+AMCR,Amcor
 REG,Regency Centers
 POOL,Pool
 Y,yte
@@ -458,12 +457,12 @@ TAP,Molson Coors Beverage Company
 NDSN,Nordson
 PAYC,Paycom Software
 UHS,Universal Health Services
-NCLH,Norwegian Cruise Line Holdings
+NCLH,Norwegian Cruise Line
 DAY,Dayforce
 SJM,The J.M. Smucker Company
 TECH,Bio-Techne Corp
 SOLV,Solventum
-ALLE,Allegion plc
+ALLE,Allegion
 BG,Bunge Limited
 AIZ,Assurant
 IPG,Interpublic Group of Companies
@@ -481,9 +480,9 @@ CRL,Charles River Laboratories
 GNRC,Generac Holdlings
 AES,The AES
 GL,Globe Life
-LW,Lamb Weston Holdings
+LW,Lamb Weston
 HSIC,Henry Schein
-MKTX,MarketAxess Holdings
+MKTX,MarketAxess
 MTCH,Match Group
 TFX,Teleflex
 WBA,Walgreens Boots Alliance
@@ -499,4 +498,4 @@ CZR,Caesars Entertainment
 BWA,BorgWarner
 QRVO,Qorvo
 FMC,FMC
-AMTM,Amentum Holdings
+AMTM,Amentum

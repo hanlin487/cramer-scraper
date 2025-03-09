@@ -84,7 +84,7 @@ def ngram_analysis(text):
     return results
 
 txt = """
-The relentless selling in Nvidia is a sign, once again, or the weak shareholder base that only knows it is a hot stock not that it is a great company, plus worries about a potential Taiwan sellout by President Trump
+$GOOGL trading under the 200 day moving average
 """
 
 res = regular_analysis(txt)

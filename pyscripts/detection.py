@@ -58,7 +58,6 @@ def detect_companies(text : str, companies_data : pd.DataFrame, threshold : int 
         #     if name_matched:
         #         break
     # print(detected)
-    
     return detected
 
 # Example usage
