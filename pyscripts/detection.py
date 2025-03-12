@@ -4,24 +4,13 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 
 def detect_companies(text : str, companies_data : pd.DataFrame, threshold : int =80 ):
-    """
-    Detect company mentions in text by ticker or any of their associated names.
-    
-    Args:
-        text: The text to search for company mentions
-        companies_data: DataFrame with 'ticker', 'names', and 'aliases' columns
-        threshold: Similarity threshold for fuzzy matching (0-100)
-        
-    Returns:
-        List of detected companies 
-    """
     detected = []
 
     for _, company in companies_data.iterrows():
         ticker = company['ticker']
         all_names = [name for name in company['names']]
 
-        # # Check for exact ticker match (case insensitive)
+        # Ticker matching, ticker must be all caps
         ticker_pattern = r'\b' + re.escape(ticker) + r'\b' 
         ticker_matches = re.findall(ticker_pattern, text)
         
@@ -29,11 +18,12 @@ def detect_companies(text : str, companies_data : pd.DataFrame, threshold : int 
             detected.append(company['ticker'])
             continue
 
-        # # Check for exact name match using any of the names (case insensitive)
+        # find company name in text, company name and text are normalized to be all lowercase,
+        # may produce the occasional false positive
         name_matched = False
         for name in all_names:
-            name_pattern = r'\b' + re.escape(name) + r'\b' 
-            name_matches = re.findall(name_pattern, text)
+            name_pattern = r'\b' + re.escape(name.lower()) + r'\b' 
+            name_matches = re.findall(name_pattern, text.lower())
             
             if name_matches:
                 detected.append(company['ticker'])
@@ -73,5 +63,5 @@ if __name__ == "__main__":
 
     companies = pd.DataFrame(company_dict)
     # print(companies)
-    sample_text = "People will wonder if Nvidia has now become a 'perfect' security, alongside PLTR, META, AMZN, and Google."
-    detect_companies(sample_text, companies)
+    sample_text = "AMAZON AMZN amazon Google, GOog, GooGlE, nvidia, meta aasdfasdf"
+    print(detect_companies(sample_text, companies))

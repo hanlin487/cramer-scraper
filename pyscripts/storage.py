@@ -35,3 +35,19 @@ def database_to_csv() -> None:
     data = cursor.fetchall()
     df = pandas.DataFrame(data, columns=["tweet_id", "date", "content", "companies"])
     df.to_csv("../storage/tweets_saved_in_db.csv", index=False)
+
+def sort_csv(filename : str, output : str) -> None:
+    with open(f"../storage/{filename}.csv") as f:
+        lines = f.readlines()
+        pairs = []
+
+        for line in lines:
+            line = line.strip().split(",")
+            pairs.append([line[0], line[1:]])
+
+        pairs = sorted(pairs, key=lambda x: x[0])
+        
+        new = open(f"../storage/{output}.csv", "w")
+        for pair in pairs:
+            new.write(f"{pair[0]},{','.join(pair[1])}\n")
+
