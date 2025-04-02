@@ -37,8 +37,11 @@ AOS,A.O. Smith
 APA,APA
 APD,Air Products and Chemicals
 APH,Amphenol
+APP,AppLovin
 APTV,Aptiv
 ARE,Alexandria Real Estate Equities
+ARM,ARM Holdings,Arm
+ASML,ASML Holding N.V.,ASML
 ATO,Atmos Energy
 AVB,AvalonBay Communities
 AVGO,Broadcom
@@ -46,12 +49,12 @@ AVY,Avery Dennison
 AWK,American Water Works Company
 AXON,Axon Enterprise
 AXP,American Express
+AZN,AstraZeneca
 AZO,AutoZone
-BA,Boeing Company
+BA,Boeing Company,Boeing
 BAC,Bank of America
-BALL,Ball
 BAX,Baxter International
-BBY,Best Buy Co.
+BBY,Best Buy
 BDX,Becton Dickinson and Company
 BEN,Franklin Resources
 BF-B,Brown Forman
@@ -61,7 +64,7 @@ BK,The Bank of New York Mellon Corp
 BKNG,Booking
 BKR,Baker Hughes
 BLDR,Builders FirstSource
-BLK,BlackRock
+BLK,BlackRock,Blackrock
 BMY,Bristol-Myers Squibb
 BR,Broadridge Financial Solutions
 BRK-B,Berkshire Hathaway
@@ -70,7 +73,7 @@ BSX,Boston Scientific
 BWA,BorgWarner
 BX,Blackstone
 BXP,BXP
-C,Citigroup
+C,Citigroup,Citi
 CAG,ConAgra Brands
 CAH,Cardinal Health
 CARR,Carrier Global
@@ -78,6 +81,7 @@ CAT,Caterpillar
 CB,Chubb Limited
 CBOE,Cboe Global Markets
 CBRE,CBRE Group
+CCEP,Coca-Cola Europacific Partners
 CCI,Crown Castle
 CCL,Carnival
 CDNS,Cadence Design Systems
@@ -92,10 +96,10 @@ CHTR,Charter Communications
 CI,The Cigna Group
 CINF,Cinnati Financial
 CL,Colgate-Palmolive
-CLX,Clorox Company
+CLX,Clorox Company,Clorox
 CMCSA,Comcast
 CME,CME Group
-CMG,Chipotle Mexican Grill
+CMG,Chipotle Mexican Grill,Chipotle
 CMI,Cummins
 CMS,CMS Energy
 CNC,Centene
@@ -112,7 +116,7 @@ CPT,Camden Property Trust
 CRL,Charles River Laboratories
 CRM,Salesforce
 CRWD,CrowdStrike
-CSCO,Cisco Systems
+CSCO,Cisco Systems,Cisco
 CSGP,CoStar Group
 CSX,CSX
 CTAS,Cintas
@@ -123,12 +127,14 @@ CVS,CVS Health
 CVX,Chevron
 CZR,Caesars Entertainment
 D,Dominion Energy
-DAL,Delta Air Lines
+DAL,Delta Air Linesm,Delta,Delta Air
+DASH,DoorDash
 DAY,Dayforce
 DD,DuPont de Nemours
+DDOG,Datadog
 DE,Deere
 DECK,Deckers Outdoor
-DELL,Dell Technologies
+DELL,Dell Technologies,Dell
 DFS,Discover Financial Services
 DG,Dollar General
 DGX,Quest Diagnostics
@@ -200,6 +206,7 @@ GE,GE Aerospace
 GEHC,GE HealthCare Technologies
 GEN,Gen Digital
 GEV,GE Vernova
+GFS,GLOBALFOUNDRIES
 GILD,Gilead Sciences
 GIS,General Mills
 GL,Globe Life
@@ -210,8 +217,8 @@ GOOG,Alphabet,Google
 GOOGL,Alphabet,Google
 GPC,Genuine Parts Company
 GPN,Global Payments
-GRMN,Garmin Ltd.
-GS,Goldman Sachs Group
+GRMN,Garmin
+GS,Goldman Sachs Group,Goldman Sachs
 GWW,W.W. Grainger
 HAL,Halliburton Company
 HAS,Hasbro
@@ -221,10 +228,10 @@ HD,Home Depot
 HES,Hess
 HIG,Hartford Financial Services Gro
 HII,Huntington Ingalls Industries
-HLT,Hilton Worldwide
+HLT,Hilton Worldwide,Hilton
 HOLX,Hologic
-HON,Honeywell International
-HPE,Hewlett Packard Enterprise Comp
+HON,Honeywell International,Honeywell
+HPE,Hewlett Packard Enterprise Comp,HP
 HPQ,HP
 HRL,Hormel Foods
 HSIC,Henry Schein
@@ -249,7 +256,7 @@ IRM,Iron Mountain
 ISRG,Intuitive Surgical
 IT,Gartner
 ITW,Illinois Tool Works
-IVZ,Invesco Ltd
+IVZ,Invesco
 J,Jacobs Solutions
 JBHT,J.B. Hunt Transport Services
 JBL,Jabil
@@ -276,32 +283,35 @@ L,Loews
 LDOS,Leidos
 LEN,Lennar
 LH,Labcorp
-LHX,L3Harris Technologies
+LHX,L3Harris Technologies,L3Harris
 LIN,Linde
 LKQ,LKQ
 LLY,Eli Lilly and Company,Eli Lilly
 LMT,Lockheed Martin
 LNT,Alliant Energy
-LOW,Lowe's Companies
+LOW,Lowe's Companies,Lowe's,Lowes
 LRCX,Lam Research
 LULU,lululemon athletica
-LUV,Southwest Airlines
+LUV,Southwest Airlines,Southwest
 LVS,Las Vegas Sands Corp.
 LW,Lamb Weston
 LYB,LyondellBasell Industries NV
+LYFT,LYFT
 LYV,Live Nation Entertainment
 MA,Mastercard
 MAA,Mid-America Apartment Communiti
-MAR,Marriott International
+MAR,Marriott International,Marriott
 MAS,Masco
-MCD,McDonald's
+MCD,McDonald's,Mcdonalds
 MCHP,Microchip Technology orporat
 MCK,McKesson
-MCO,Moody's
+MCO,Moody's,Moodys
+MDB,MongoDB
 MDLZ,Mondelez International
 MDT,Medtronic
+MELI,Mercado Libre
 MET,MetLife
-META,Meta
+META,Meta,Facebook
 MGM,MGM Resorts International
 MHK,Mohawk Industries
 MKC,McCormick & Company
@@ -317,14 +327,16 @@ MPC,Marathon Petroleum
 MPWR,Monolithic Power Systems
 MRK,Merck
 MRNA,Moderna
+MRVL,Marvell Technology,Marvell
 MS,Morgan Stanley
 MSCI,MSCI
 MSFT,Microsoft
-MSI,Motorola Solutions
+MSI,Motorola Solutions,Motorola
+MSTR,MicroStrategy
 MTB,M&T Bank
 MTCH,Match Group
 MTD,Mettler-Toledo International
-MU,Micron Technology
+MU,Micron Technology,Micron
 NCLH,Norwegian Cruise Line
 NDAQ,Nasdaq
 NDSN,Nordson
@@ -341,9 +353,6 @@ NTAP,NetApp
 NTRS,Northern Trust
 NUE,Nucor
 NVDA,Nvidia
-NVR,NVR
-NWS,News
-NWSA,News
 NXPI,NXP Semiconductors N.V.
 O,Realty ome
 ODFL,Old Dominion Freight Line
@@ -359,20 +368,21 @@ PARA,Paramount Global
 PAYC,Paycom Software
 PAYX,Paychex
 PCAR,PACCAR
-PCG,Pacific Gas & Electric Co.
-PEG,Public Service Enterprise Group
-PEP,Pepsico
+PCG,Pacific Gas & Electric,PG&E
+PDD,PDD Holdings
+PEG,Public Service Enterprise
+PEP,Pepsi
 PFE,Pfizer
-PFG,Pripal Financial Group
-PG,Procter & Gamble Company
+PFG,Pripal Financial
+PG,Procter & Gamble
 PGR,Progressive
 PH,Parker-Hannifin
 PHM,PulteGroup
-PKG,Packaging  of Americ
+PKG,Packaging Corporation of America
 PLD,Prologis
-PLTR,Palantir Technologies,Palantir
-PM,Philip Morris International
-PNC,PNC Financial Services Group
+PLTR,Palantir
+PM,Philip Morris
+PNC,PNC
 PNR,Pentair
 PNW,Pinnacle West Capital
 PODD,Insulet
@@ -387,16 +397,16 @@ PWR,Quanta Services
 PYPL,PayPal
 QCOM,QUALCOMM
 QRVO,Qorvo
-RCL,Royal Caribbean Cruises Ltd.
+RCL,Royal Caribbean Cruises
 REG,Regency Centers
-REGN,Regeneron Pharmaceuticals
+REGN,Regeneron
 RF,Regions Financial
-RJF,Raymond James Financial
+RJF,Raymond James
 RL,Ralph Lauren
 RMD,ResMed
 ROK,Rockwell Automation
 ROL,Rollins
-ROP,Roper Technologies
+ROP,Roper
 ROST,Ross Stores
 RSG,Republic Services
 RTX,RTX
@@ -429,7 +439,8 @@ SYY,Sysco
 T,AT&T
 TAP,Molson Coors Beverage Company
 TDG,Transdigm Group
-TDY,Teledyne Technologies orpora
+TDY,Teledyne
+TEAM,Atlassian
 TECH,Bio-Techne Corp
 TEL,TE Connectivity
 TER,Teradyne
@@ -437,24 +448,25 @@ TFC,Truist Financial
 TFX,Teleflex
 TGT,Target
 TJX,TJX Companies
-TMO,Thermo Fisher Scientific
+TMO,Thermo Fisher
 TMUS,T-Mobile
-TPL,Texas Pacific Land
+TPL,Texas Pacific
 TPR,Tapestry
 TRGP,Targa Resources
 TRMB,Trimble
-TROW,T. Rowe Price Group
+TROW,T. Rowe Price
 TRV,The Travelers Companies
 TSCO,Tractor Supply Company
 TSLA,Tesla
 TSN,Tyson Foods
 TT,Trane Technologies
+TTD,The Trade Desk
 TTWO,Take-Two Interactive Software
 TXN,Texas Instruments
 TXT,Textron
 TYL,Tyler Technologies
 UAL,United Airlines
-UBER,Uber Technologies
+UBER,Uber Technologies,Uber
 UDR,UDR
 UHS,Universal Health Services
 ULTA,Ulta Beauty
@@ -466,21 +478,22 @@ USB,U.S. Bancorp
 V,Visa
 VICI,VICI Properties
 VLO,Valero Energy
-VLTO,Veralto Corp
-VMC,Vulcan Materials Company
+VLTO,Veralto
+VMC,Vulcan Materials
 VRSK,Verisk Analytics
 VRSN,VeriSign
 VRTX,Vertex Pharmaceuticals
-VST,Vistra Corp.
+VST,Vistra
 VTR,Ventas
 VTRS,Viatris
 VZ,Verizon Communications,Verizon
-WAB,Westinghouse Air Brake Technolo
+WAB,Westinghouse Air Brake Technologies
 WAT,Waters
 WBA,Walgreens Boots Alliance
-WBD,Warner Bros. Discovery
+WBD,Warner Bros
+WDAY,Workday
 WDC,Western Digital
-WEC,WEC Energy Group
+WEC,WEC Energy
 WELL,Welltower
 WFC,Wells Fargo
 WM,Waste Management
@@ -488,14 +501,14 @@ WMB,Williams Companies
 WMT,Walmart
 WRB,W.R. Berkley
 WST,West Pharmaceutical Services
-WTW,Willis Towers Watson Public Lim
+WTW,Willis Towers Watson Public
 WY,Weyerhaeuser Company
 WYNN,Wynn Resorts
 XEL,Xcel Energy
 XOM,Exxon Mobil
 XYL,Xylem
-Y,yte
-YUM,Yum! Brands
+YUM,Yum!
 ZBH,Zimmer Biomet
 ZBRA,Zebra Technologies
+ZS,Zscaler
 ZTS,Zoetis

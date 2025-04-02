@@ -1,8 +1,9 @@
 import sqlite3 
 import pandas
+import psycopg2
 
-def insert_to_db(df : pandas.DataFrame) -> None:
-    conn = sqlite3.connect("../storage/tweets.db")
+def insert_to_tweets(df : pandas.DataFrame) -> None:
+    conn = sqlite3.connect(f"../storage/tweets.db")
     cursor = conn.cursor()
     cursor.execute(
         """
@@ -37,7 +38,7 @@ def database_to_csv() -> None:
     df.to_csv("../storage/tweets_saved_in_db.csv", index=False)
 
 def sort_csv(filename : str, output : str) -> None:
-    with open(f"../storage/{filename}.csv") as f:
+    with open(f"../storage/{filename}") as f:
         lines = f.readlines()
         pairs = []
 
@@ -47,7 +48,46 @@ def sort_csv(filename : str, output : str) -> None:
 
         pairs = sorted(pairs, key=lambda x: x[0])
         
-        new = open(f"../storage/{output}.csv", "w")
+        new = open(f"../storage/{output}", "w")
         for pair in pairs:
             new.write(f"{pair[0]},{','.join(pair[1])}\n")
 
+def remove_duplicates(filename : str, output : str) -> None:
+    with open(f"../storage/{filename}") as f:
+        lines = f.readlines()
+        d = {}
+
+        for line in lines:
+            line = line.split(",")
+            ticker = line[0]
+            names = ",".join(line[1:]).strip()
+            print(ticker, names)
+            
+            if ticker not in d:
+                d[ticker] = names
+        
+        with open(f'../storage/{output}', "w") as new:
+            for ticker, names in d.items():
+                new.write(f"{ticker},{names}\n")
+
+def connect_postgres():
+    try:
+        return psycopg2.connect(
+            database="postgres",
+            user="postgres",
+            password="battleon9981",
+            host="localhost",
+            port="5432"
+        )
+    except Exception as e:
+        print(f'Error with postgres connection: {e}')
+
+
+if __name__ == "__main__":
+    #postgres stuff
+    conn = connect_postgres()
+    if conn:
+        print("Connected to postgres")
+        conn.close()
+    else:
+        print('No connection')

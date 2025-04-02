@@ -38,7 +38,7 @@ def load_sp500() -> pd.DataFrame:
     return companies
 
 # scrapes tweets
-def scrape_user(num_of_tweets) -> pd.DataFrame:
+def scrape_user(num_of_tweets=100) -> pd.DataFrame:
     # boot up tweepy client for twitter
     username = "jimcramer"
     client = init_client()
@@ -95,7 +95,8 @@ def scrape_user(num_of_tweets) -> pd.DataFrame:
 
 if __name__ == "__main__":    
     # if limit rated comment these 2 lines out
-    # tweets = scrape_user(5)
+    tweets = scrape_user(100)
+    storage.insert_to_db(tweets)
     # storage.dataframe_to_csv(tweets)
     # tweets = pd.read_csv("../storage/tweets_from_scraping.csv").fillna("")
     
