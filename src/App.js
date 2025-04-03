@@ -14,13 +14,25 @@ function App() {
         <button onClick={log} id="year" className="btn">
           1 year
         </button>
+        <button onClick={pullDB} id="fetch" className="btn">
+          Fetch!
+        </button>
       </div>
     </div>
   );
 }
+export default App;
 
 function log(event) {
   console.log(`${event.target.id} button clicked`);
 }
 
-export default App;
+async function pullDB() {
+  try {
+    const res = await fetch("http://localhost:3000/data");
+    const data = await res.json();
+    console.log("Data fetched from the database:", data);
+  } catch (E) {
+    console.error(`pullDB Error ${E}`);
+  }
+}
