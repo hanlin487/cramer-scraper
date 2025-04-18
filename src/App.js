@@ -3,36 +3,41 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      Cramer Tweets
-      <div className="button-container">
-        <button onClick={log} id="week" className="btn">
-          1 week
-        </button>
-        <button onClick={log} id="month" className="btn">
-          1 month
-        </button>
-        <button onClick={log} id="year" className="btn">
-          1 year
-        </button>
-        <button onClick={pullDB} id="fetch" className="btn">
-          Fetch!
-        </button>
-      </div>
+      <p className="page-title">Cramer Tweets</p>
+      <TweetList data={tweets} />
     </div>
   );
 }
 export default App;
 
-function log(event) {
-  console.log(`${event.target.id} button clicked`);
-}
+const tweets = await pullDB();
+tweets.reverse();
 
 async function pullDB() {
   try {
     const res = await fetch("http://localhost:3000/data");
-    const data = await res.json();
-    console.log("Data fetched from the database:", data);
+    const tweets = await res.json();
+    // console.log("Data fetched from the database:", tweets, typeof tweets);
+    return tweets;
   } catch (E) {
     console.error(`pullDB Error ${E}`);
   }
+}
+
+function TweetList({ data }) {
+  return (
+    <div className="tweet-list-container">
+      <ul className="tweet-list">
+        {data.map((tweet) => (
+          <li key={tweet.tweet_id} className="tweet-row">
+            <p className="tweet-content">{tweet.content}</p>
+            <p>
+              <small>{tweet.companies}</small>
+            </p>
+            <small>{new Date(tweet.date).toLocaleString()}</small>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

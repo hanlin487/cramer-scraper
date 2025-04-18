@@ -96,7 +96,7 @@ def scrape_user(num_of_tweets=100) -> pd.DataFrame:
 if __name__ == "__main__":    
     # if limit rated comment these 2 lines out
     tweets = scrape_user(100)
-    storage.insert_to_db(tweets)
+    storage.insert_to_tweets(tweets)
     # storage.dataframe_to_csv(tweets)
     # tweets = pd.read_csv("../storage/tweets_from_scraping.csv").fillna("")
     
