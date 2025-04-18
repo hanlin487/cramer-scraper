@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #141d2b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,57 +8,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.button-container {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.btn {
-  background-color: #688aad; /* Blue button color */
-  color: white;
-  font-weight: bold;
-  padding: 0.625rem 1.25rem; /* 10px 20px */
-  border: none;
-  border-radius: 0.5rem; /* 8px */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #3a4b5e; /* Darker blue on hover */
-}
-
-.tweet-list-container {
-  width: 50%;
-  height: auto;
-  /* padding: 0rem 10rem 0rem 10rem; */
-}
-
-.tweet-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc
-}
-
-.tweet-row {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr; /* content | companies | date */
-  gap: 0.5rem;
-  /* padding: 0rem 0.5rem 0rem 0.5rem; */
-  border-bottom: 1px solid #ccc;
-  align-items: center;
-  font-size: 60%;
-}
-
-.tweet-row .tweet-content {
-  margin: 0.5rem 1rem 0.5rem 1rem; 
-  text-align: left;
-}
-
-.tweet-row:nth-child(even) {
-  background-color: #f9f9f9;
 }
